@@ -20,27 +20,21 @@ namespace Exceptions
         {
             int result;
             string entry;
-            bool success = false;
-            do
+            Console.Write("Please type a numeric value: ");
+            entry = Console.ReadLine();
+            if (entry.Length <= 0)
             {
-                Console.Write("Please type a numeric value: ");
-                entry = Console.ReadLine();
-                if (entry.Length <= 0)
-                {
-                    throw (new EmptyStringException("The string is empty!"));
-                }
-                try
-                {
-                    result = int.Parse(entry);
-                    success = true;
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine($"Error while trying to parse the value as Int!");
-                    throw;
-                }
+                throw (new EmptyStringException("The string is empty!"));
             }
-            while (!success);
+            try
+            {
+                result = int.Parse(entry);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Error while trying to parse the value as Int!");
+                throw;
+            }
             return result;
         }
 
